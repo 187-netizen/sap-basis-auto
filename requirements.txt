@@ -1,0 +1,2 @@
+pyautogui>=0.9.50
+pyinstaller>=6.0.0
