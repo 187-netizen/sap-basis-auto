@@ -2774,6 +2774,9 @@ def Getbasis_15(save_path):
     # ---------- 子步骤 15_SAP_ALL_NEW ----------
     skip_15_1 = should_skip_sub_step(state, "Getbasis_15", "15_SAP_ALL_NEW", sub_steps)
     if not skip_15_1:
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
         # SUIM-用户-按复杂选择条件选择的用户-按复杂选择条件选择的用户-按角色/参数文件
         pyautogui.hotkey('ctrl', '/')
