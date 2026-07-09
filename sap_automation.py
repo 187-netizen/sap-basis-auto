@@ -425,15 +425,6 @@ def Getbasis_1_table_a(save_path):
     time.sleep(1)
     pyautogui.typewrite('02')
     time.sleep(1)
-    pyautogui.press('tab')
-    pyautogui.press('tab')
-    pyautogui.press('tab')
-    pyautogui.press('tab')
-    time.sleep(1)
-    pyautogui.typewrite('S_CTS_ADMI')
-    time.sleep(1)
-    pyautogui.press('enter')
-    time.sleep(5)
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path,'basis_1_scc4_查看权限_a.png')) #根据前台获取的保存路径保存
     pyautogui.hotkey('F8')
@@ -469,6 +460,10 @@ def Getbasis_1_table_a(save_path):
 def Getbasis_1_table_b(save_path):
      setup_pyautogui()
      #SUIM-权限-按值
+     # 先按ESC确保退出任何残留画面
+     for i in range(3):
+         pyautogui.press('esc')
+         time.sleep(0.5)
      time.sleep(1)
      pyautogui.hotkey('ctrl', '/')
      pyautogui.typewrite('/nS_BCE_68001397')
@@ -520,15 +515,6 @@ def Getbasis_1_table_b(save_path):
      time.sleep(1)
      pyautogui.typewrite('T000')
      time.sleep(1)
-     pyautogui.press('tab')
-     pyautogui.press('tab')
-     pyautogui.press('tab')
-     pyautogui.press('tab')
-     time.sleep(1)
-     pyautogui.typewrite('S_CTS_ADMI')
-     time.sleep(1)
-     pyautogui.press('enter')
-     time.sleep(5)
      screenshot = pyautogui.screenshot()
      screenshot.save(os.path.join(save_path,'basis_1_scc4_查看权限_b.png'))
      pyautogui.hotkey('F8')
