@@ -272,13 +272,13 @@ def input_dates():
 
 def GetExcel_shortcutKey_1():
     pyautogui.hotkey('ctrl', 'shift', 'F9')
-    time.sleep(8)
+    time.sleep(13)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(8)
+    time.sleep(13)
     # 点击对话框中间确保文件名输入框获得焦点
     screen_w, screen_h = pyautogui.size()
     pyautogui.click(screen_w // 2, screen_h // 2)
@@ -294,17 +294,17 @@ def GetExcel_shortcutKey_1():
 def GetExcel_shortcutKey_2():
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(10)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(10)
     pyautogui.press('left')
     time.sleep(2)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(10)
     pyautogui.press('enter')
     time.sleep(3)
 
@@ -313,15 +313,15 @@ def GetExcel_shortcutKey_2():
 
 def GetExcel_pc_1():
     pyautogui.typewrite('%PC')
-    time.sleep(8)
+    time.sleep(13)
     pyautogui.press('enter')
-    time.sleep(8)
+    time.sleep(13)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(8)
+    time.sleep(13)
     # 点击对话框中间确保文件名输入框获得焦点
     screen_w, screen_h = pyautogui.size()
     pyautogui.click(screen_w // 2, screen_h // 2)
@@ -335,17 +335,17 @@ def GetExcel_pc_1():
 def GetExcel_pc_2():
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(10)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(10)
     pyautogui.press('left')
     time.sleep(2)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(10)
     pyautogui.press('enter')
     time.sleep(3)
 
@@ -430,7 +430,7 @@ def Getbasis_1_table_a(save_path):
     pyautogui.typewrite('S_TABU_DIS')   
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(8)
+    time.sleep(13)
     pyautogui.press('tab')
     time.sleep(2)
     pyautogui.typewrite('SS')
@@ -1022,6 +1022,9 @@ def Getbasis_6(save_path):
 
 def Getbasis_7(save_path):
     setup_pyautogui()
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
     time.sleep(1)
     # SUIM-用户-按复杂选择条件选择的用户-按权限值
     pyautogui.hotkey('ctrl', '/')
@@ -1052,6 +1055,9 @@ def Getbasis_7(save_path):
     pyautogui.typewrite('01')
     time.sleep(1.0)
     pyautogui.press('enter')
+    time.sleep(1.0)
+    pyautogui.press('tab')
+    pyautogui.typewrite('02')
     time.sleep(1.0)
     for i in range(3):
         pyautogui.press('tab')
