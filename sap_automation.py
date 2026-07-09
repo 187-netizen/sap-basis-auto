@@ -357,6 +357,9 @@ def Getbasis_1_T000(save_path):
     #登录至菜单
     time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
     time.sleep(1)
     pyautogui.typewrite('/nSE16')
     time.sleep(1)
@@ -396,6 +399,10 @@ def Getbasis_1_table_a(save_path):
     setup_pyautogui()
     time.sleep(1)
     #SUIM-用户-按复杂选择条件选择的用户-按权限值
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nS_BCE_68001397')
     time.sleep(1.0)
@@ -572,6 +579,10 @@ def GetTB(save_path):
     setup_pyautogui()
     #登录至菜单
     time.sleep(1)
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     time.sleep(1)
     pyautogui.typewrite('/nS_ALR_87012277')
@@ -628,6 +639,10 @@ def GetTB(save_path):
 def GetJE(save_path):
     setup_pyautogui()
     time.sleep(1)
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     time.sleep(1)
     pyautogui.typewrite('/nSE16')
@@ -675,6 +690,10 @@ def GetJE(save_path):
 #替代性程序
 def Getbasis_2_2(save_path):
     setup_pyautogui()
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nSE16')
     pyautogui.press('enter')
@@ -715,6 +734,10 @@ def Getbasis_2_2(save_path):
 
 def Getbasis_3(save_path):
     setup_pyautogui()
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nSA38')
     pyautogui.press('enter')
@@ -736,6 +759,10 @@ def Getbasis_3(save_path):
 
 def Getbasis_4(save_path):
     setup_pyautogui()
+    time.sleep(1)
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
     time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     time.sleep(1)
@@ -775,6 +802,10 @@ def Getbasis_5(save_path):
     state = load_progress(save_path)
     '''
     # SUIM-用户-按复杂选择条件选择的用户-按权限值
+    time.sleep(1)
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
     time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nS_BCE_68001397')
@@ -829,6 +860,10 @@ def Getbasis_5(save_path):
     skip_5a = should_skip_sub_step(state, "Getbasis_5", "5a", sub_steps)
     if not skip_5a:
         # SUIM-用户-按复杂选择条件选择的用户-按权限值
+        time.sleep(1)
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
         pyautogui.hotkey('ctrl', '/')
         pyautogui.typewrite('/nS_BCE_68001397')
@@ -963,6 +998,10 @@ def Getbasis_6(save_path):
     setup_pyautogui()
     time.sleep(1)
     # SUIM-用户-按复杂选择条件选择的用户-按权限值
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nS_BCE_68001397')
     time.sleep(1.0)
@@ -1114,6 +1153,10 @@ def Getbasis_8_1(save_path):
     setup_pyautogui()
     time.sleep(1)
     # SUIM-更改文档-用于角色
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nRSSCD100_PFCG')
     time.sleep(1.0)
@@ -1187,6 +1230,10 @@ def Getbasis_8_2(save_path):
     setup_pyautogui()
     time.sleep(1)
     # SUIM-更改文档-针对参数文件
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nS_BCE_68001440')
     time.sleep(1.0)
@@ -2579,6 +2626,10 @@ def Getbasis_11(save_path):
     setup_pyautogui()
     time.sleep(1)
     # SUIM-用户-按复杂选择条件选择的用户-按权限值
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nS_BCE_68001397')
     time.sleep(1.0)
@@ -2660,6 +2711,10 @@ def Getbasis_12(save_path):
     if not skip_12_1:
         time.sleep(1)
         #密码变更记录
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
+        time.sleep(1)
         pyautogui.hotkey('ctrl', '/')
         time.sleep(1)
         pyautogui.typewrite('/nSE16')
@@ -3144,6 +3199,10 @@ def Getbasis_Info(save_path):
     state = load_progress(save_path)
     '''
     # SUIM-用户-按复杂选择条件选择的用户-按复杂选择条件选择的用户-按角色/参数文件
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
+    time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     pyautogui.typewrite('/nSE16')
     time.sleep(1.0)
@@ -3157,6 +3216,10 @@ def Getbasis_Info(save_path):
         time.sleep(1)
 
         # SUIM-用户-按复杂选择条件选择的用户-按复杂选择条件选择的用户-按角色/参数文件
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
+        time.sleep(1)
         pyautogui.hotkey('ctrl', '/')
         pyautogui.typewrite('/nSE16')
         time.sleep(1.0)
