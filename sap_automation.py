@@ -23,6 +23,13 @@ AUDIT_END_DATE = "2025.09.30"     # 审计期间结束日期
 FISCAL_YEAR = "2025"              # 会计年度
 COMPANY_CODE = "1010"             # 公司代码
 
+# ==================== 等待时间配置 ====================
+# 可通过 input_dates() 弹窗自定义，单位：秒
+SLEEP_LOAD = 5.0       # T-code画面加载等待
+SLEEP_QUERY = 10.0     # F8查询执行等待
+SLEEP_EXPORT = 13.0    # 导出对话框等待
+SLEEP_LONG = 20.0      # 超长等待(大数据量查询)
+
 # ==================== 断点续连状态管理 ====================
 STATE_FILENAME = ".sap_automation_state.json"
 
@@ -185,7 +192,7 @@ def input_dates():
     root.attributes('-topmost', True)
 
     # 计算窗口居中
-    win_w, win_h = 560, 340
+    win_w, win_h = 560, 520
     screen_w = root.winfo_screenwidth()
     screen_h = root.winfo_screenheight()
     x = (screen_w - win_w) // 2
@@ -233,8 +240,30 @@ def input_dates():
     entry_company = tk.Entry(frame4, textvariable=var_company, font=("微软雅黑", 10), width=18, justify="center")
     entry_company.pack(side="left", padx=5)
 
+    # 等待时间配置
+    tk.Label(root, text="等待时间配置（秒，默认值即可，需要时调整）：",
+             font=("微软雅黑", 9), fg="blue").pack(pady=(10, 5))
+
+    sleep_frame = tk.Frame(root)
+    sleep_frame.pack(pady=2)
+    sleep_vars = {}
+    for label_text, var_name, default_val in [
+        ("画面加载等待：", "SLEEP_LOAD", "5.0"),
+        ("查询执行等待：", "SLEEP_QUERY", "10.0"),
+        ("导出对话框等待：", "SLEEP_EXPORT", "13.0"),
+        ("超长等待：", "SLEEP_LONG", "20.0"),
+    ]:
+        row = tk.Frame(sleep_frame)
+        row.pack(pady=1)
+        tk.Label(row, text=label_text, font=("微软雅黑", 9), width=16, anchor="e").pack(side="left")
+        sv = tk.StringVar(value=default_val)
+        sleep_vars[var_name] = sv
+        tk.Entry(row, textvariable=sv, font=("微软雅黑", 9), width=8, justify="center").pack(side="left", padx=3)
+        tk.Label(row, text="秒", font=("微软雅黑", 9)).pack(side="left")
+
     def on_confirm():
         global AUDIT_START_DATE, AUDIT_END_DATE, FISCAL_YEAR, COMPANY_CODE
+        global SLEEP_LOAD, SLEEP_QUERY, SLEEP_EXPORT, SLEEP_LONG
         start_val = var_start.get().strip()
         end_val = var_end.get().strip()
         year_val = var_year.get().strip()
@@ -248,6 +277,15 @@ def input_dates():
         AUDIT_END_DATE = end_val
         FISCAL_YEAR = year_val
         COMPANY_CODE = company_val
+
+        # 保存等待时间配置
+        try:
+            SLEEP_LOAD = float(sleep_vars["SLEEP_LOAD"].get().strip())
+            SLEEP_QUERY = float(sleep_vars["SLEEP_QUERY"].get().strip())
+            SLEEP_EXPORT = float(sleep_vars["SLEEP_EXPORT"].get().strip())
+            SLEEP_LONG = float(sleep_vars["SLEEP_LONG"].get().strip())
+        except:
+            pass
 
         root.quit()
         root.destroy()
@@ -268,17 +306,18 @@ def input_dates():
     root.mainloop()
 
     print(f"[日期参数] 审计开始日期：{AUDIT_START_DATE}，审计结束日期：{AUDIT_END_DATE}，会计年度：{FISCAL_YEAR}，公司代码：{COMPANY_CODE}")
+    print(f"[等待时间] 加载={SLEEP_LOAD}s 查询={SLEEP_QUERY}s 导出={SLEEP_EXPORT}s 超长={SLEEP_LONG}s")
 
 
 def GetExcel_shortcutKey_1():
     pyautogui.hotkey('ctrl', 'shift', 'F9')
-    time.sleep(13)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(13)
+    time.sleep(SLEEP_EXPORT)
     # 点击对话框中间确保文件名输入框获得焦点
     screen_w, screen_h = pyautogui.size()
     pyautogui.click(screen_w // 2, screen_h // 2)
@@ -294,17 +333,17 @@ def GetExcel_shortcutKey_1():
 def GetExcel_shortcutKey_2():
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(10)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(10)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('left')
     time.sleep(2)
     pyautogui.press('enter')
-    time.sleep(10)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('enter')
     time.sleep(3)
 
@@ -315,13 +354,13 @@ def GetExcel_pc_1():
     pyautogui.typewrite('%PC')
     time.sleep(13)
     pyautogui.press('enter')
-    time.sleep(13)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(13)
+    time.sleep(SLEEP_EXPORT)
     # 点击对话框中间确保文件名输入框获得焦点
     screen_w, screen_h = pyautogui.size()
     pyautogui.click(screen_w // 2, screen_h // 2)
@@ -335,17 +374,17 @@ def GetExcel_pc_1():
 def GetExcel_pc_2():
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(10)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(10)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('left')
     time.sleep(2)
     pyautogui.press('enter')
-    time.sleep(10)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('enter')
     time.sleep(3)
 
@@ -437,7 +476,7 @@ def Getbasis_1_table_a(save_path):
     pyautogui.typewrite('S_TABU_DIS')   
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(13)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('tab')
     time.sleep(2)
     pyautogui.typewrite('SS')
@@ -544,7 +583,7 @@ def Getbasis_1_table_b(save_path):
      screenshot = pyautogui.screenshot()
      screenshot.save(os.path.join(save_path,'basis_1_scc4_查看权限_b.png'))
      pyautogui.hotkey('F8')
-     time.sleep(20)
+     time.sleep(SLEEP_LONG)
      ClickMouse_UP()
 
      #截图表b筛选条件
@@ -852,7 +891,7 @@ def Getbasis_5(save_path):
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path, 'basis_5_STMS_查看权限_a.png'))  # 根据前台获取的保存路径保存
     pyautogui.hotkey('F8')
-    time.sleep(20)
+    time.sleep(SLEEP_LONG)
     ClickMouse_UP()
     '''
 
@@ -910,7 +949,7 @@ def Getbasis_5(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_5_STMS_查看权限_a.png'))  # 根据前台获取的保存路径保存
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
 
         # 截图表a筛选条件
@@ -1026,7 +1065,7 @@ def Getbasis_6(save_path):
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path, 'basis_6.png'))  # 根据前台获取的保存路径保存
     pyautogui.hotkey('F8')
-    time.sleep(20)
+    time.sleep(SLEEP_LONG)
     ClickMouse_UP()
 
     # 截图筛选条件
@@ -1117,7 +1156,7 @@ def Getbasis_7(save_path):
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path, 'basis_7.png'))  # 根据前台获取的保存路径保存
     pyautogui.hotkey('F8')
-    time.sleep(20)
+    time.sleep(SLEEP_LONG)
     ClickMouse_UP()
 
     # 截图筛选条件
@@ -1339,7 +1378,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9a2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1407,7 +1446,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9b2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1475,7 +1514,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9c2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1543,7 +1582,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9d2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1611,7 +1650,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9e2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1679,7 +1718,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9f2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1747,7 +1786,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9g2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1815,7 +1854,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9h2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1883,7 +1922,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9i2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -1951,7 +1990,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9j2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -2019,7 +2058,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9k2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -2087,7 +2126,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9l2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -2155,7 +2194,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9m2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -2223,7 +2262,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9n2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -2291,7 +2330,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9o2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
@@ -2359,7 +2398,7 @@ def Getbasis_9(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9p2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(20)
+        time.sleep(SLEEP_LONG)
         ClickMouse_UP()
         pyautogui.press('pageup')
         time.sleep(3)
