@@ -1716,17 +1716,6 @@ def Getbasis_9(save_path):
         pyautogui.press('tab')
         clear_input()
         pyautogui.typewrite('22')
-        time.sleep(1)
-        clear_input()
-        pyautogui.typewrite('S_USER_PRO')
-        time.sleep(1)
-        pyautogui.press('enter')
-        time.sleep(3)
-        for i in range(5):
-            pyautogui.press('tab')
-            time.sleep(1)
-        clear_input()
-        pyautogui.typewrite('22')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9i_2.png'))  # 根据前台获取的保存路径保存
