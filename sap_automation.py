@@ -149,9 +149,13 @@ def select_save_path():
 
 def clear_input():
     pyautogui.hotkey('ctrl', 'a')
-    time.sleep(0.2)
-    pyautogui.press('delete')
-    time.sleep(0.2)
+    time.sleep(0.3)
+    pyautogui.press('backspace')
+    time.sleep(0.3)
+    # 额外保险：多按几次backspace确保清空
+    for _ in range(5):
+        pyautogui.press('delete')
+        time.sleep(0.1)
 
 
 
@@ -267,13 +271,13 @@ def input_dates():
 
 def GetExcel_shortcutKey_1():
     pyautogui.hotkey('ctrl', 'shift', 'F9')
-    time.sleep(5)
+    time.sleep(8)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(8)
     pyautogui.hotkey('ctrl', 'a')
     time.sleep(1)
 
@@ -1106,9 +1110,12 @@ def Getbasis_8_1(save_path):
     pyautogui.press('down')
     pyautogui.press('down')
     time.sleep(1)
+    clear_input()
     pyautogui.typewrite(AUDIT_END_DATE) #审计期间结束日期
     pyautogui.press('enter')
-    time.sleep(1)
+    time.sleep(2)
+    screenshot = pyautogui.screenshot()
+    screenshot.save(os.path.join(save_path, 'basis_8_1_日期设置.png'))
     pyautogui.hotkey('ctrl', 'tab')
     for i in range(14):
         pyautogui.press('down')
@@ -1170,6 +1177,7 @@ def Getbasis_8_2(save_path):
     pyautogui.press('down')
     time.sleep(1)
     clear_input()
+    clear_input()
     pyautogui.typewrite(AUDIT_START_DATE) #审计期间开始日期
     pyautogui.press('enter')
     time.sleep(1)
@@ -1178,7 +1186,9 @@ def Getbasis_8_2(save_path):
     clear_input()
     pyautogui.typewrite(AUDIT_END_DATE) #审计期间结束日期
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(2)
+    screenshot = pyautogui.screenshot()
+    screenshot.save(os.path.join(save_path, 'basis_8_2_日期设置.png'))
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path, 'basis_8_2.png'))  # 根据前台获取的保存路径保存
     time.sleep(1)
