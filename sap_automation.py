@@ -1241,37 +1241,31 @@ def Getbasis_9(save_path):
     setup_pyautogui()
     sub_steps = ["9a","9b","9c","9d","9e","9f","9g","9h","9i","9j","9k","9l","9m","9n","9o","9p"]
     state = load_progress(save_path)
-    '''
-    # SUIM-用户-按复杂选择条件选择的用户-按权限值
-    pyautogui.hotkey('ctrl', '/')
-    pyautogui.typewrite('/nS_BCE_68001397')
-    time.sleep(1.0)
-    pyautogui.press('enter')
-    time.sleep(5)
-    '''
+
     # ---------- 子步骤 9a ----------
     skip_9a = should_skip_sub_step(state, "Getbasis_9", "9a", sub_steps)
     if not skip_9a:
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
-        # 9a
-        # SUIM-用户-按复杂选择条件选择的用户-按权限值
         pyautogui.hotkey('ctrl', '/')
         pyautogui.typewrite('/nS_BCE_68001397')
         time.sleep(1.0)
         pyautogui.press('enter')
         time.sleep(5)
-
         pyautogui.typewrite('S_TCODE')
         pyautogui.press('enter')
         time.sleep(5)
         pyautogui.press('tab')
         pyautogui.typewrite('SU01')
         pyautogui.press('enter')
-        time.sleep(5)
+        time.sleep(3)
         pyautogui.press('tab')
+        clear_input()
         pyautogui.typewrite('SU02')
         pyautogui.press('enter')
-        time.sleep(5)
+        time.sleep(3)
         for i in range(3):
             pyautogui.press('tab')
         time.sleep(5)
@@ -1286,12 +1280,14 @@ def Getbasis_9(save_path):
         pyautogui.typewrite('22')
         time.sleep(5)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9a.png'))  # 根据前台获取的保存路径保存
+        screenshot.save(os.path.join(save_path, 'basis_9a1.png'))
+        pyautogui.press('pagedown')
+        time.sleep(3)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9a2.png'))
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1300,50 +1296,66 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9a.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9a.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9a')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9a", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9a")
     # ---------- 子步骤 9b ----------
     skip_9b = should_skip_sub_step(state, "Getbasis_9", "9b", sub_steps)
     if not skip_9b:
-        #9b
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('SU12')
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('PFCG')
         pyautogui.press('enter')
         time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9b1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9b2.png'))
-
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1352,51 +1364,66 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9b.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9b.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9b')
         GetExcel_shortcutKey_2()
-
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9b", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9b")
     # ---------- 子步骤 9c ----------
     skip_9c = should_skip_sub_step(state, "Getbasis_9", "9c", sub_steps)
     if not skip_9c:
-        # 9c
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('GCE1')
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('OMDL')
         pyautogui.press('enter')
         time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9c1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9c2.png'))
-
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1405,51 +1432,66 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9c.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9c.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9c')
         GetExcel_shortcutKey_2()
-
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9c", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9c")
     # ---------- 子步骤 9d ----------
     skip_9d = should_skip_sub_step(state, "Getbasis_9", "9d", sub_steps)
     if not skip_9d:
-        # 9d
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('OMEH')
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('OMWF')
         pyautogui.press('enter')
         time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9d1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9d2.png'))
-
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1458,50 +1500,66 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9d.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9d.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9d')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9d", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9d")
     # ---------- 子步骤 9e ----------
     skip_9e = should_skip_sub_step(state, "Getbasis_9", "9e", sub_steps)
     if not skip_9e:
-        # 9e
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('ON09')
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('OOUS')
         pyautogui.press('enter')
         time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9e.png'))
+        screenshot.save(os.path.join(save_path, 'basis_9e1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9e2.png'))
-
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1510,51 +1568,66 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9e.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9e.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9e')
         GetExcel_shortcutKey_2()
-
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9e", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9e")
     # ---------- 子步骤 9f ----------
     skip_9f = should_skip_sub_step(state, "Getbasis_9", "9f", sub_steps)
     if not skip_9f:
-        # 9f
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('OPF0')
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('OTZ1')
         pyautogui.press('enter')
         time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9f1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9f2.png'))
-
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1563,51 +1636,66 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9f.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9f.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9f')
         GetExcel_shortcutKey_2()
-
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9f", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9f")
     # ---------- 子步骤 9g ----------
     skip_9g = should_skip_sub_step(state, "Getbasis_9", "9g", sub_steps)
     if not skip_9g:
-        #9g
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('OY22')
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('OY28')
         pyautogui.press('enter')
         time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9g1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9g2.png'))
-
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1616,51 +1704,66 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9g.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9g.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9g')
         GetExcel_shortcutKey_2()
-
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9g", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9g")
     # ---------- 子步骤 9h ----------
     skip_9h = should_skip_sub_step(state, "Getbasis_9", "9h", sub_steps)
     if not skip_9h:
-        # 9h
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('OY29')
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('OY30')
         pyautogui.press('enter')
         time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9h1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9h2.png'))
-
         pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -1669,36 +1772,36 @@ def Getbasis_9(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9h.查询结果2.png'))
-
-        # 完整性截图
-        time.sleep(1)
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9h.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9h')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9h", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9h")
     # ---------- 子步骤 9i ----------
     skip_9i = should_skip_sub_step(state, "Getbasis_9", "9i", sub_steps)
     if not skip_9i:
-        #9i
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
-        clear_input()
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.typewrite('S_TCODE')
         pyautogui.press('enter')
-        time.sleep(3)
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('SU01')
         pyautogui.press('enter')
         time.sleep(3)
@@ -1707,496 +1810,553 @@ def Getbasis_9(save_path):
         pyautogui.typewrite('SU10')
         pyautogui.press('enter')
         time.sleep(3)
-        pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
-        clear_input()
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
         pyautogui.typewrite('S_USER_GRP')
         pyautogui.press('enter')
-        time.sleep(3)
+        time.sleep(5)
         for i in range(5):
             pyautogui.press('tab')
-            time.sleep(1)
-        clear_input()
-        pyautogui.typewrite('02')
         time.sleep(1)
+        pyautogui.typewrite('02')
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9i1.png'))
+        pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9i_2.png'))  # 根据前台获取的保存路径保存
-        time.sleep(1)
+        screenshot.save(os.path.join(save_path, 'basis_9i2.png'))
         pyautogui.hotkey('F8')
-        time.sleep(3)
+        time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9i.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9i.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9i.查询结果3.png'))
-        time.sleep(1)
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9i')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9i", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9i")
     # ---------- 子步骤 9j ----------
     skip_9j = should_skip_sub_step(state, "Getbasis_9", "9j", sub_steps)
     if not skip_9j:
-        #9j
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('SU12')
-        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
         clear_input()
         pyautogui.typewrite('PFCG')
         pyautogui.press('enter')
         time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9j_1.png'))
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9j1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9j_2.png'))
-        time.sleep(1)
-        pyautogui.press('F8')
-        time.sleep(3)
+        screenshot.save(os.path.join(save_path, 'basis_9j2.png'))
+        pyautogui.hotkey('F8')
+        time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9j.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9j.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9j.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9j')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9j", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9j")
     # ---------- 子步骤 9k ----------
     skip_9k = should_skip_sub_step(state, "Getbasis_9", "9k", sub_steps)
     if not skip_9k:
-        # 9k
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        time.sleep(1)
-        clear_input()
         pyautogui.typewrite('GCE1')
-        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
         clear_input()
         pyautogui.typewrite('OMDL')
         pyautogui.press('enter')
         time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9k_1.png'))
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9k1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9k_2.png'))
-        time.sleep(1)
-        pyautogui.press('F8')
-        time.sleep(3)
+        screenshot.save(os.path.join(save_path, 'basis_9k2.png'))
+        pyautogui.hotkey('F8')
+        time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9k.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9k.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9k.查询结果3.png'))
-        time.sleep(1)
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9k')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9k", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9k")
     # ---------- 子步骤 9l ----------
     skip_9l = should_skip_sub_step(state, "Getbasis_9", "9l", sub_steps)
     if not skip_9l:
-        #  9l
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        time.sleep(1)
-        clear_input()
         pyautogui.typewrite('OMEH')
-        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
-        time.sleep(1)
         clear_input()
         pyautogui.typewrite('OMWF')
         pyautogui.press('enter')
         time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9l_1.png'))
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9l1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9l_2.png'))
-        time.sleep(1)
-        pyautogui.press('F8')
-        time.sleep(3)
+        screenshot.save(os.path.join(save_path, 'basis_9l2.png'))
+        pyautogui.hotkey('F8')
+        time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9l.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9l.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9l.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9l')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9l", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9l")
     # ---------- 子步骤 9m ----------
     skip_9m = should_skip_sub_step(state, "Getbasis_9", "9m", sub_steps)
     if not skip_9m:
-        #   9m
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('ON09')
-        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
         clear_input()
         pyautogui.typewrite('OOUS')
         pyautogui.press('enter')
         time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9m_1.png'))
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9m1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9m_2.png'))
-        time.sleep(1)
-        pyautogui.press('F8')
-        time.sleep(3)
+        screenshot.save(os.path.join(save_path, 'basis_9m2.png'))
+        pyautogui.hotkey('F8')
+        time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9m.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9m.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9m.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9m')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9m", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9m")
     # ---------- 子步骤 9n ----------
     skip_9n = should_skip_sub_step(state, "Getbasis_9", "9n", sub_steps)
     if not skip_9n:
-        #   9n
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('OPF0')
-        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
         clear_input()
         pyautogui.typewrite('OTZ1')
         pyautogui.press('enter')
         time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9n_1.png'))
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9n1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9n_2.png'))
-        time.sleep(1)
-        pyautogui.press('F8')
-        time.sleep(3)
+        screenshot.save(os.path.join(save_path, 'basis_9n2.png'))
+        pyautogui.hotkey('F8')
+        time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9n.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9n.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9n.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9n')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9n", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9n")
     # ---------- 子步骤 9o ----------
     skip_9o = should_skip_sub_step(state, "Getbasis_9", "9o", sub_steps)
     if not skip_9o:
-        #   9o
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('OY22')
-        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
         clear_input()
         pyautogui.typewrite('OY28')
         pyautogui.press('enter')
         time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9o_1.png'))
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9o1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9o_2.png'))
-        time.sleep(1)
-        pyautogui.press('F8')
+        screenshot.save(os.path.join(save_path, 'basis_9o2.png'))
+        pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9o.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9o.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9o.查询结果3.png'))
-        time.sleep(1)
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9o')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_9", "9o", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9o")
     # ---------- 子步骤 9p ----------
     skip_9p = should_skip_sub_step(state, "Getbasis_9", "9p", sub_steps)
     if not skip_9p:
-        #   9p
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.press('tab')
-        clear_input()
         pyautogui.typewrite('OY29')
-        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(3)
         pyautogui.press('tab')
         clear_input()
         pyautogui.typewrite('OY30')
         pyautogui.press('enter')
         time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9p_1.png'))
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(5)
+        pyautogui.typewrite('S_USER_GRP')
+        pyautogui.press('enter')
+        time.sleep(5)
+        for i in range(5):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('02')
+        pyautogui.press('tab')
+        pyautogui.typewrite('22')
+        time.sleep(5)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_9p1.png'))
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_9p_2.png'))
-        time.sleep(1)
-        pyautogui.press('F8')
+        screenshot.save(os.path.join(save_path, 'basis_9p2.png'))
+        pyautogui.hotkey('F8')
         time.sleep(20)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9p.查询结果1.png'))
-        time.sleep(1)
         pyautogui.press('pagedown')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9p.查询结果2.png'))
-        time.sleep(1)
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_9p.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_9p')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
-        #返回
         for i in range(2):
             pyautogui.press('F3')
             time.sleep(1)
-
         mark_sub_step_done(save_path, "Getbasis_9", "9p", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 9p")
-
 
 def Getbasis_10(save_path):
     setup_pyautogui()
     sub_steps = ["10a", "10b", "10c", "10d"]
     state = load_progress(save_path)
-    '''
-    # SUIM-用户-按复杂选择条件选择的用户-按权限值
-    pyautogui.hotkey('ctrl', '/')
-    pyautogui.typewrite('/nS_BCE_68001397')
-    time.sleep(1)
-    pyautogui.press('enter')
-    time.sleep(5)
-    '''
 
     # ---------- 子步骤 10a ----------
     skip_10a = should_skip_sub_step(state, "Getbasis_10", "10a", sub_steps)
     if not skip_10a:
-        # 先按ESC确保退出任何残留画面
         for i in range(3):
             pyautogui.press('esc')
             time.sleep(0.5)
         time.sleep(1)
-        #10A
-        # SUIM-用户-按复杂选择条件选择的用户-按权限值
         pyautogui.hotkey('ctrl', '/')
         pyautogui.typewrite('/nS_BCE_68001397')
         time.sleep(1)
         pyautogui.press('enter')
         time.sleep(5)
-
         pyautogui.typewrite('S_TCODE')
         pyautogui.press('enter')
         time.sleep(3)
         pyautogui.press('tab')
         time.sleep(1)
         pyautogui.typewrite('SM30')
-        time.sleep(1)
         pyautogui.press('tab')
         time.sleep(1)
         pyautogui.typewrite('SM31')
-        time.sleep(1)
         for i in range(3):
             pyautogui.press('tab')
         time.sleep(1)
@@ -2206,7 +2366,6 @@ def Getbasis_10(save_path):
         pyautogui.press('tab')
         time.sleep(1)
         pyautogui.typewrite('*')
-        time.sleep(1)
         for i in range(4):
             pyautogui.press('tab')
         time.sleep(1)
@@ -2218,8 +2377,6 @@ def Getbasis_10(save_path):
         pyautogui.press('F8')
         time.sleep(5)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -2228,21 +2385,17 @@ def Getbasis_10(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_a.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_a.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_10_a')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_10", "10a", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 10a")
@@ -2250,17 +2403,29 @@ def Getbasis_10(save_path):
     # ---------- 子步骤 10b ----------
     skip_10b = should_skip_sub_step(state, "Getbasis_10", "10b", sub_steps)
     if not skip_10b:
-        #10B
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
-        pyautogui.hotkey('ctrl', 'tab')
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
+        time.sleep(1)
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
         time.sleep(1)
         pyautogui.typewrite('S_TABU_NAM')
         pyautogui.press('enter')
         time.sleep(3)
+        screenshot = pyautogui.screenshot()
+        screenshot.save(os.path.join(save_path, 'basis_10_b_S_TABU_NAM确认.png'))
         pyautogui.press('tab')
         time.sleep(1)
         pyautogui.typewrite('*')
-        time.sleep(1)
         for i in range(4):
             pyautogui.press('tab')
         time.sleep(1)
@@ -2272,8 +2437,6 @@ def Getbasis_10(save_path):
         pyautogui.press('F8')
         time.sleep(5)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -2282,21 +2445,17 @@ def Getbasis_10(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_b.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_b.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_10_b')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_10", "10b", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 10b")
@@ -2304,18 +2463,24 @@ def Getbasis_10(save_path):
     # ---------- 子步骤 10c ----------
     skip_10c = should_skip_sub_step(state, "Getbasis_10", "10c", sub_steps)
     if not skip_10c:
-        #10C
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
-        pyautogui.press('tab')
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
         time.sleep(1)
-        clear_input()
-        time.sleep(1)
-        pyautogui.typewrite('SM34')
+        pyautogui.press('enter')
+        time.sleep(5)
+        pyautogui.typewrite('S_TCODE')
         pyautogui.press('enter')
         time.sleep(3)
         pyautogui.press('tab')
         time.sleep(1)
-        clear_input()
+        pyautogui.typewrite('SM34')
+        for i in range(3):
+            pyautogui.press('tab')
+        time.sleep(1)
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_c.png'))
@@ -2323,8 +2488,6 @@ def Getbasis_10(save_path):
         pyautogui.press('F8')
         time.sleep(5)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -2333,21 +2496,17 @@ def Getbasis_10(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_c.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_c.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_10_c')
         GetExcel_shortcutKey_2()
-        pyautogui.press('F3')
-        time.sleep(5)
-
+        for i in range(2):
+            pyautogui.press('F3')
+            time.sleep(1)
         mark_sub_step_done(save_path, "Getbasis_10", "10c", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 10c")
@@ -2355,19 +2514,27 @@ def Getbasis_10(save_path):
     # ---------- 子步骤 10d ----------
     skip_10d = should_skip_sub_step(state, "Getbasis_10", "10d", sub_steps)
     if not skip_10d:
-        #10D
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
-        pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
-        clear_input()
-        time.sleep(1)
-        pyautogui.typewrite('S_TABU_DIS')
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001397')
         time.sleep(1)
         pyautogui.press('enter')
         time.sleep(5)
-        pyautogui.press('tab')
-        pyautogui.typewrite('*')
+        pyautogui.typewrite('S_TCODE')
+        pyautogui.press('enter')
+        time.sleep(3)
+        for i in range(3):
+            pyautogui.press('tab')
         time.sleep(1)
+        pyautogui.typewrite('S_TABU_DIS')
+        pyautogui.press('enter')
+        time.sleep(3)
+        pyautogui.press('tab')
+        time.sleep(1)
+        pyautogui.typewrite('*')
         for i in range(4):
             pyautogui.press('tab')
         time.sleep(1)
@@ -2379,8 +2546,6 @@ def Getbasis_10(save_path):
         pyautogui.press('F8')
         time.sleep(5)
         ClickMouse_UP()
-
-        # 截图筛选条件
         pyautogui.press('pageup')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -2389,30 +2554,20 @@ def Getbasis_10(save_path):
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_d.查询结果2.png'))
-
-        # 完整性截图
         ClickMouse_DOWN()
         pyautogui.hotkey('ctrl', 'shift', 'down')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_10_d.查询结果3.png'))
-
-        # 导出
         GetExcel_shortcutKey_1()
         pyautogui.typewrite('basis_10_d')
         GetExcel_shortcutKey_2()
-
-        # 返回
-        time.sleep(3)
         for i in range(2):
             pyautogui.press('F3')
             time.sleep(1)
-
         mark_sub_step_done(save_path, "Getbasis_10", "10d", sub_steps)
     else:
         print("[断点续连] 跳过已完成的子步骤: 10d")
-
-
 
 def Getbasis_11(save_path):
     setup_pyautogui()
