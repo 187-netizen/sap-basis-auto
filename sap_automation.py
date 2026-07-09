@@ -2760,45 +2760,30 @@ def Getbasis_14(save_path):
 
 def Getbasis_15(save_path):
     setup_pyautogui()
-    sub_steps = ["15_SAP_ALL_NEW", "15_SAP_NEW"]
+    sub_steps = ["15_SAP_ALL_NEW", "15_SAP_NEW角色"]
     state = load_progress(save_path)
-    '''
-    # SUIM-用户-按复杂选择条件选择的用户-按复杂选择条件选择的用户-按角色/参数文件
-    pyautogui.hotkey('ctrl', '/')
-    pyautogui.typewrite('/nS_BCE_68001400')
-    time.sleep(1.0)
-    pyautogui.press('enter')
-    time.sleep(5)
-    '''
 
     # ---------- 子步骤 15_SAP_ALL_NEW ----------
     skip_15_1 = should_skip_sub_step(state, "Getbasis_15", "15_SAP_ALL_NEW", sub_steps)
     if not skip_15_1:
+        # 先按ESC确保退出任何残留画面
         for i in range(3):
             pyautogui.press('esc')
             time.sleep(0.5)
         time.sleep(1)
-        # SUIM-用户-按复杂选择条件选择的用户-按复杂选择条件选择的用户-按角色/参数文件
+        # SUIM-用户-按复杂选择条件选择的用户-按角色/参数文件
         pyautogui.hotkey('ctrl', '/')
         pyautogui.typewrite('/nS_BCE_68001400')
         time.sleep(1.0)
         pyautogui.press('enter')
         time.sleep(5)
 
-        pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
-        for i in range(2):
-            pyautogui.press('right')
-        time.sleep(1)
-        pyautogui.press('enter')
-        for i in range(2):
-            pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
-        for i in range(7):
+        for i in range(13):
             pyautogui.press('tab')
         time.sleep(1)
         pyautogui.press('enter')
         time.sleep(5)
+
         pyautogui.typewrite('SAP_ALL')
         time.sleep(1)
         pyautogui.press('enter')
@@ -2835,17 +2820,9 @@ def Getbasis_15(save_path):
         GetExcel_shortcutKey_2()
 
         #返回
-        pyautogui.press('F3')
-        pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
-        for i in range(2):
-            pyautogui.press('right')
-        time.sleep(1)
-        pyautogui.press('enter')
-        time.sleep(2)
-        for i in range(2):
-            pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
+        for i in range(3):
+            pyautogui.press('F3')
+            time.sleep(1)
 
         mark_sub_step_done(save_path, "Getbasis_15", "15_SAP_ALL_NEW", sub_steps)
     else:
@@ -2854,20 +2831,22 @@ def Getbasis_15(save_path):
     # ---------- 子步骤 15_SAP_NEW角色 ----------
     skip_15_2 = should_skip_sub_step(state, "Getbasis_15", "15_SAP_NEW角色", sub_steps)
     if not skip_15_2:
+        # 先按ESC确保退出任何残留画面
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
-        for i in range(4):
+        # SUIM-用户-按复杂选择条件选择的用户-按角色/参数文件
+        pyautogui.hotkey('ctrl', '/')
+        pyautogui.typewrite('/nS_BCE_68001400')
+        time.sleep(1.0)
+        pyautogui.press('enter')
+        time.sleep(5)
+
+        for i in range(10):
             pyautogui.press('tab')
         time.sleep(1)
         pyautogui.typewrite('SAP_NEW')
-        pyautogui.press('enter')
-        time.sleep(2)
-        for i in range(2):
-            pyautogui.press('tab')
-        time.sleep(1)
-        clear_input()
-        pyautogui.press('enter')
-        time.sleep(1)
-        clear_input()
         pyautogui.press('enter')
         time.sleep(3)
         screenshot = pyautogui.screenshot()
@@ -2877,72 +2856,14 @@ def Getbasis_15(save_path):
         screenshot = pyautogui.screenshot()
         screenshot.save(os.path.join(save_path, 'basis_15.SAP_NEW_角色结果.png'))
 
-    #返回
-        pyautogui.press('tab')
-        pyautogui.press('enter')
-        time.sleep(3)
-
-        mark_sub_step_done(save_path, "Getbasis_15", "15_SAP_NEW角色", sub_steps)
-    else:
-        print("[断点续连] 跳过已完成的子步骤: 15_SAP_NEW角色")
-
-    # ---------- 子步骤 15_SAP_NEW参数文件 ----------
-    skip_15_3 = should_skip_sub_step(state, "Getbasis_15", "15_SAP_NEW参数文件", sub_steps)
-    if not skip_15_3:
-        time.sleep(1)
-        pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
-        for i in range(2):
-            pyautogui.press('right')
-        time.sleep(1)
-        pyautogui.press('enter')
-        for i in range(2):
-            pyautogui.hotkey('ctrl', 'tab')
-        time.sleep(1)
-        for i in range(4):
-            pyautogui.press('tab')
-        clear_input()
-        pyautogui.press('enter')
-        time.sleep(1)
-        for i in range(2):
-            pyautogui.press('tab')
-        pyautogui.typewrite('SAP_NEW')
-        pyautogui.press('enter')
-        time.sleep(1)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_15.SAP_NEW参数文件.png'))
-        pyautogui.press('F8')
-        time.sleep(5)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_15.SAP_NEW_参数文件结果1.png'))
-
-        ClickMouse_UP()
-        pyautogui.press('pagedown')
-        time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_15.SAP_NEW_参数文件结果2.png'))
-        ClickMouse_DOWN()
-        pyautogui.hotkey('ctrl', 'shift', 'down')
-        time.sleep(3)
-        screenshot = pyautogui.screenshot()
-        screenshot.save(os.path.join(save_path, 'basis_15.SAP_NEW_参数文件结果3.png'))
-
-        # 导出
-        GetExcel_shortcutKey_1()
-        pyautogui.typewrite('basis_15')
-        GetExcel_shortcutKey_2()
-
-        # 返回
+        #返回
         for i in range(2):
             pyautogui.press('F3')
             time.sleep(1)
 
-        mark_sub_step_done(save_path, "Getbasis_15", "15_SAP_NEW参数文件", sub_steps)
+        mark_sub_step_done(save_path, "Getbasis_15", "15_SAP_NEW角色", sub_steps)
     else:
-        print("[断点续连] 跳过已完成的子步骤: 15_SAP_NEW参数文件")
-
-
-#无内容
+        print("[断点续连] 跳过已完成的子步骤: 15_SAP_NEW角色")
 def Getbasis_16(save_path):
     setup_pyautogui()
     # SUIM-更改文档-用户-用于用户-按角色/参数文件
