@@ -2872,61 +2872,83 @@ def Getbasis_15(save_path):
 def Getbasis_16(save_path):
     setup_pyautogui()
     # SUIM-更改文档-用户-用于用户-按角色/参数文件
+    # 先按ESC确保退出任何残留画面
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
     time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
-    pyautogui.typewrite('/nS_BCE_68002311')
+    pyautogui.typewrite('/nS_BCE_68001439')
     time.sleep(1.0)
     pyautogui.press('enter')
     time.sleep(5)
 
-    for i in range(2):
+    # 开始日期
+    for i in range(7):
         pyautogui.press('down')
     clear_input()
-    pyautogui.typewrite(AUDIT_START_DATE) #审计起始日
-    pyautogui.press('enter')
-    time.sleep(1)
-    for i in range(2):
-        pyautogui.press('down')
-    clear_input()
-    pyautogui.typewrite(AUDIT_END_DATE)  # 审计结束日
+    pyautogui.typewrite(AUDIT_START_DATE)
     pyautogui.press('enter')
     time.sleep(1)
 
-    for i in range(4):
-        pyautogui.hotkey('ctrl', 'tab')
-    pyautogui.press('right')
+    # 结束日期
+    for i in range(5):
+        pyautogui.press('down')
+    clear_input()
+    pyautogui.typewrite(AUDIT_END_DATE)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(1)
+
+    # 结束时间 23:59:59
+    pyautogui.press('down')
+    clear_input()
+    pyautogui.typewrite('23:59:59')
+    pyautogui.press('enter')
+    time.sleep(1)
+
+    # 第一组: SAP_NEW + SAP_ALL
+    for i in range(7):
+        pyautogui.press('down')
+    pyautogui.press('enter')
+    pyautogui.typewrite('SAP_NEW')
+    pyautogui.press('enter')
+    time.sleep(1)
+    for i in range(2):
+        pyautogui.press('down')
+    pyautogui.typewrite('SAP_ALL')
+    pyautogui.press('enter')
+    time.sleep(1)
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path, 'basis_16_筛选1.png'))
     time.sleep(1)
-    pyautogui.press('down')
-    pyautogui.press('space')
-    pyautogui.press('tab')
-    clear_input()
+
+    pyautogui.hotkey('ctrl', 'tab')
+    pyautogui.press('enter')
+    time.sleep(3)
+
+    # 第二组: SAP_NEW + SAP_ALL
+    for i in range(6):
+        pyautogui.press('down')
+    pyautogui.press('enter')
     pyautogui.typewrite('SAP_NEW')
     pyautogui.press('enter')
-    pyautogui.press('pagedown')
-    pyautogui.press('down')
-    pyautogui.press('space')
     time.sleep(1)
-    for i in range(3):
-        pyautogui.press('tab')
-    pyautogui.press('enter')
-    time.sleep(1)
+    for i in range(2):
+        pyautogui.press('down')
     pyautogui.typewrite('SAP_ALL')
     pyautogui.press('enter')
-    pyautogui.press('down')
-    pyautogui.typewrite('SAP_NEW')
-    pyautogui.press('enter')
-    time.sleep(1)
-    screenshot = pyautogui.screenshot()
-    screenshot.save(os.path.join(save_path, 'basis_16_参数文件.png'))
-    time.sleep(1)
-    pyautogui.press('F8')
     time.sleep(1)
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path, 'basis_16_筛选2.png'))
+    time.sleep(1)
+
+    pyautogui.hotkey('ctrl', 'tab')
+    pyautogui.press('enter')
+    time.sleep(3)
+    screenshot = pyautogui.screenshot()
+    screenshot.save(os.path.join(save_path, 'basis_16_筛选3.png'))
+    time.sleep(1)
+
     pyautogui.press('F8')
     time.sleep(5)
 
@@ -2954,8 +2976,6 @@ def Getbasis_16(save_path):
     for i in range(2):
         pyautogui.press('F3')
         time.sleep(1)
-
-
 
 def Getbasis_Info(save_path):
     setup_pyautogui()
