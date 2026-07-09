@@ -279,8 +279,14 @@ def GetExcel_shortcutKey_1():
     time.sleep(1)
     pyautogui.press('enter')
     time.sleep(8)
+    # 点击对话框中间确保文件名输入框获得焦点
+    screen_w, screen_h = pyautogui.size()
+    pyautogui.click(screen_w // 2, screen_h // 2)
+    time.sleep(0.5)
     pyautogui.hotkey('ctrl', 'a')
-    time.sleep(1)
+    time.sleep(0.5)
+    pyautogui.press('backspace')
+    time.sleep(0.3)
 
 
 
