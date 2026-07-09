@@ -2167,6 +2167,10 @@ def Getbasis_10(save_path):
     # ---------- 子步骤 10a ----------
     skip_10a = should_skip_sub_step(state, "Getbasis_10", "10a", sub_steps)
     if not skip_10a:
+        # 先按ESC确保退出任何残留画面
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
         #10A
         # SUIM-用户-按复杂选择条件选择的用户-按权限值
