@@ -2710,9 +2710,10 @@ def Getbasis_13(save_path):
 
 def Getbasis_14(save_path):
     setup_pyautogui()
-    #登录至菜单
-    
-    #密码变更记录
+    # 先按ESC确保退出任何残留画面
+    for i in range(3):
+        pyautogui.press('esc')
+        time.sleep(0.5)
     time.sleep(1)
     pyautogui.hotkey('ctrl', '/')
     time.sleep(1)
@@ -2722,6 +2723,10 @@ def Getbasis_14(save_path):
     time.sleep(5)
     pyautogui.typewrite('RSUSR003')
     time.sleep(3)
+    pyautogui.hotkey('shift', 'tab')
+    time.sleep(0.5)
+    pyautogui.press('space')
+    time.sleep(0.5)
     screenshot = pyautogui.screenshot()
     screenshot.save(os.path.join(save_path, 'basis_14_RSUSR003.png'))
     time.sleep(1)
