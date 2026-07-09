@@ -504,6 +504,8 @@ def Getbasis_1_table_b(save_path):
      time.sleep(1)
      pyautogui.press('enter')
      time.sleep(5)
+     screenshot = pyautogui.screenshot()
+     screenshot.save(os.path.join(save_path,'basis_1_scc4_查看权限_b_条件2确认.png'))
      pyautogui.press('tab')
      time.sleep(2)
      pyautogui.typewrite('02')
