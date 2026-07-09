@@ -313,33 +313,39 @@ def GetExcel_shortcutKey_2():
 
 def GetExcel_pc_1():
     pyautogui.typewrite('%PC')
-    time.sleep(5)
+    time.sleep(8)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(8)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('down')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(5)
+    time.sleep(8)
+    # 点击对话框中间确保文件名输入框获得焦点
+    screen_w, screen_h = pyautogui.size()
+    pyautogui.click(screen_w // 2, screen_h // 2)
+    time.sleep(0.5)
     pyautogui.hotkey('ctrl', 'a')
-    time.sleep(1)
+    time.sleep(0.5)
+    pyautogui.press('backspace')
+    time.sleep(0.3)
 
 
 def GetExcel_pc_2():
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(3)
+    time.sleep(5)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('tab')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(3)
+    time.sleep(5)
     pyautogui.press('left')
-    time.sleep(1)
+    time.sleep(2)
     pyautogui.press('enter')
-    time.sleep(3)
+    time.sleep(5)
     pyautogui.press('enter')
     time.sleep(3)
 
@@ -2554,6 +2560,10 @@ def Getbasis_12(save_path):
     skip_12_2 = should_skip_sub_step(state, "Getbasis_12", "12_密码策略", sub_steps)
     if not skip_12_2:
         #密码策略
+        # 先按ESC确保退出任何残留画面
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
         pyautogui.hotkey('ctrl', '/')
         time.sleep(1)
@@ -2562,8 +2572,6 @@ def Getbasis_12(save_path):
         pyautogui.press('enter')
         time.sleep(3)
         pyautogui.typewrite('RSPARAM')
-        pyautogui.press('F8')
-        time.sleep(3)
         pyautogui.press('F8')
         time.sleep(5)
 
@@ -2604,6 +2612,10 @@ def Getbasis_13(save_path):
     # ---------- 子步骤 13_查看组件版本 ----------
     skip_13_1 = should_skip_sub_step(state, "Getbasis_13", "13_查看组件版本", sub_steps)
     if not skip_13_1:
+        # 先按ESC确保退出任何残留画面
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
         pyautogui.hotkey('alt', 'Y')
         time.sleep(0.5)
@@ -2636,6 +2648,10 @@ def Getbasis_13(save_path):
     skip_13_2 = should_skip_sub_step(state, "Getbasis_13", "13_USR02", sub_steps)
     if not skip_13_2:
         #如果SAP_BASIS组件>=732，请执行以下程序，为所有适用的SAP实例提供完整的USR02报告。
+        # 先按ESC确保退出任何残留画面
+        for i in range(3):
+            pyautogui.press('esc')
+            time.sleep(0.5)
         time.sleep(1)
         pyautogui.hotkey('ctrl', '/')
         time.sleep(1)
