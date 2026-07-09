@@ -234,6 +234,7 @@ def input_dates():
     entry_company.pack(side="left", padx=5)
 
     def on_confirm():
+        global AUDIT_START_DATE, AUDIT_END_DATE, FISCAL_YEAR, COMPANY_CODE
         start_val = var_start.get().strip()
         end_val = var_end.get().strip()
         year_val = var_year.get().strip()
