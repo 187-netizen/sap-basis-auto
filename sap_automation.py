@@ -318,10 +318,10 @@ def GetExcel_shortcutKey_1():
     time.sleep(1)
     pyautogui.press('enter')
     time.sleep(SLEEP_EXPORT)
-    # Shift+Tab回到文件名输入框, 确保焦点
+    # 唤醒文件名输入框: Shift+Tab离开再Tab回来
     pyautogui.hotkey('shift', 'tab')
     time.sleep(0.3)
-    pyautogui.hotkey('shift', 'tab')
+    pyautogui.press('tab')
     time.sleep(0.3)
     pyautogui.hotkey('ctrl', 'a')
     time.sleep(0.5)
@@ -362,10 +362,10 @@ def GetExcel_pc_1():
     time.sleep(1)
     pyautogui.press('enter')
     time.sleep(SLEEP_EXPORT)
-    # Shift+Tab回到文件名输入框, 确保焦点
+    # 唤醒文件名输入框: Shift+Tab离开再Tab回来
     pyautogui.hotkey('shift', 'tab')
     time.sleep(0.3)
-    pyautogui.hotkey('shift', 'tab')
+    pyautogui.press('tab')
     time.sleep(0.3)
     pyautogui.hotkey('ctrl', 'a')
     time.sleep(0.5)
