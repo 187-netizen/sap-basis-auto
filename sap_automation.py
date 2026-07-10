@@ -318,14 +318,15 @@ def GetExcel_shortcutKey_1():
     time.sleep(1)
     pyautogui.press('enter')
     time.sleep(SLEEP_EXPORT)
-    # 点击对话框中间确保文件名输入框获得焦点
-    screen_w, screen_h = pyautogui.size()
-    pyautogui.click(screen_w // 2, screen_h // 2)
-    time.sleep(0.5)
+    # Shift+Tab回到文件名输入框, 确保焦点
+    pyautogui.hotkey('shift', 'tab')
+    time.sleep(0.3)
+    pyautogui.hotkey('shift', 'tab')
+    time.sleep(0.3)
     pyautogui.hotkey('ctrl', 'a')
     time.sleep(0.5)
     pyautogui.press('backspace')
-    time.sleep(0.3)
+    time.sleep(0.5)
 
 
 
@@ -352,7 +353,7 @@ def GetExcel_shortcutKey_2():
 
 def GetExcel_pc_1():
     pyautogui.typewrite('%PC')
-    time.sleep(13)
+    time.sleep(SLEEP_EXPORT)
     pyautogui.press('enter')
     time.sleep(SLEEP_EXPORT)
     pyautogui.press('down')
@@ -361,14 +362,15 @@ def GetExcel_pc_1():
     time.sleep(1)
     pyautogui.press('enter')
     time.sleep(SLEEP_EXPORT)
-    # 点击对话框中间确保文件名输入框获得焦点
-    screen_w, screen_h = pyautogui.size()
-    pyautogui.click(screen_w // 2, screen_h // 2)
-    time.sleep(0.5)
+    # Shift+Tab回到文件名输入框, 确保焦点
+    pyautogui.hotkey('shift', 'tab')
+    time.sleep(0.3)
+    pyautogui.hotkey('shift', 'tab')
+    time.sleep(0.3)
     pyautogui.hotkey('ctrl', 'a')
     time.sleep(0.5)
     pyautogui.press('backspace')
-    time.sleep(0.3)
+    time.sleep(0.5)
 
 
 def GetExcel_pc_2():
