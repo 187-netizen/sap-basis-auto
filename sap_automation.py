@@ -726,7 +726,6 @@ def GetJE(save_path):
         pyautogui.press('F3')
         time.sleep(1)
 
-'''
 #第二页 没有权限访问
 #替代性程序
 def Getbasis_2_2(save_path):
@@ -794,8 +793,6 @@ def Getbasis_3(save_path):
     GetExcel_shortcutKey_1()
     pyautogui.typewrite('basis_3')
     GetExcel_shortcutKey_2()
-'''
-
 
 
 def Getbasis_4(save_path):
@@ -3503,7 +3500,8 @@ def main():
         ("Getbasis_1_T000", Getbasis_1_T000),
         ("Getbasis_1_table_a", Getbasis_1_table_a),
         ("Getbasis_1_table_b", Getbasis_1_table_b),
-        #("Getbasis_2_2", Getbasis_2_2), 无权限
+        ("Getbasis_2_2", Getbasis_2_2),
+        ("Getbasis_3", Getbasis_3),
         ("Getbasis_4", Getbasis_4),
         ("Getbasis_5", Getbasis_5),
         ("Getbasis_6", Getbasis_6),
